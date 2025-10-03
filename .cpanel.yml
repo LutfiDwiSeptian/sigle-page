@@ -1,4 +1,8 @@
-
+deployment:
+  tasks:
+    # Set path
+    - export DEPLOYPATH=/home/banb4683/public_html
+    - /bin/echo "Deploy path: $DEPLOYPATH"
 
     # Sinkron kode (kecuali vendor, node_modules, .env)
     - /usr/bin/rsync -av --delete \
