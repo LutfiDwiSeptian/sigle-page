@@ -14,55 +14,55 @@
     <div id="formModal"
         class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 opacity-100 pointer-events-auto transition-opacity duration-300">
         <div
-            class="bg-white w-full max-w-lg mx-4 rounded-2xl shadow-2xl p-6 md:p-10 relative overflow-y-auto max-h-[90vh]">
+            class="bg-white w-full max-w-sm sm:max-w-md mx-4 rounded-xl shadow-xl p-5 md:p-6 relative overflow-y-auto max-h-[85vh] border border-blue-100">
             <button onclick="closeModal()"
                 class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
-            <div class="flex flex-col items-center mb-4">
-                <img src="{{ asset('favicon.png') }}" alt="Info" class="h-12 w-12 mb-2">
-                <h2 class="text-lg font-bold text-blue-700 mb-2">Guest Registration</h2>
-                <p class="text-sm text-gray-600 text-center mb-2 px-2">
+            <div class="flex flex-col items-center mb-3">
+                <img src="{{ asset('favicon.png') }}" alt="Info" class="h-10 w-10 mb-1">
+                <h2 class="text-base font-bold text-blue-700 mb-1 tracking-wide">Guest Registration</h2>
+                <p class="text-xs text-gray-600 text-center mb-2 px-1 leading-relaxed">
                     This form is only used to collect your name and email information.
                     <span class="font-semibold text-blue-600">Your data will not be used for any other purpose</span>
                     and is guaranteed privacy.
                 </p>
-                <div class="w-full border-b border-gray-200 mb-4"></div>
+                <div class="w-full border-b border-gray-200 mb-3"></div>
             </div>
-            <form action="{{ route('guest.store') }}" method="POST" class="space-y-5">
+            <form action="{{ route('guest.store') }}" method="POST" class="space-y-4 text-sm">
                 @csrf
                 <div>
-                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="name">Name</label>
+                    <label class="block text-gray-700 text-xs mb-1 font-medium" for="name">Name</label>
                     <input type="text" name="name" id="name"
-                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
-                        placeholder="Enter your name" required>
+                        class="w-full border border-blue-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Name" required>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="email">Email</label>
+                    <label class="block text-gray-700 text-xs mb-1 font-medium" for="email">Email</label>
                     <input type="email" name="email" id="email"
-                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
-                        placeholder="Enter your email" required>
+                        class="w-full border border-blue-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Email" required>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="occupation">Occupation</label>
+                    <label class="block text-gray-700 text-xs mb-1 font-medium" for="occupation">Occupation</label>
                     <input type="text" name="occupation" id="occupation"
-                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
-                        placeholder="Enter your occupation" required>
+                        class="w-full border border-blue-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Occupation" required>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="company">Company</label>
+                    <label class="block text-gray-700 text-xs mb-1 font-medium" for="company">Company</label>
                     <input type="text" name="company" id="company"
-                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
-                        placeholder="Enter your company" required>
+                        class="w-full border border-blue-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Company" required>
                 </div>
                 <div>
-                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="phone">Phone Number</label>
+                    <label class="block text-gray-700 text-xs mb-1 font-medium" for="phone">Phone</label>
                     <input type="text" name="phone" id="phone"
-                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
-                        placeholder="Enter your phone number" required>
+                        class="w-full border border-blue-200 rounded-md px-3 py-1.5 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Phone" required>
                 </div>
                 <div class="flex justify-end">
                     <button type="submit"
-                        class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-lg shadow-lg font-semibold hover:from-blue-600 hover:to-blue-800 transition flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-5 py-2 rounded-md shadow font-medium hover:from-blue-600 hover:to-blue-800 transition flex items-center gap-2 text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
