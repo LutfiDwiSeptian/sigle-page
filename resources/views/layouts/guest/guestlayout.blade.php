@@ -4,202 +4,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- CDN Tailwind -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Sweet alert -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!---------->
-    <title>Home Page</title>
+    <title>Bandung Pilot Academy</title>
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="antialiased bg-gray-50">
-    <div class="w-full">
-        <div class="bg-blue-600 text-white">
-
-            <div class="max-w-7xl mx-auto flex justify-end space-x-4 px-4 py-2">
-                <a href="https://facebook.com" target="_blank" class="hover:text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M22 12a10 10 0 1 0-11.6 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1 .9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.3 3h-1.9v7A10 10 0 0 0 22 12z" />
-                    </svg>
-                </a>
-                <a href="https://twitter.com" target="_blank" class="hover:text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M22.46 6c-.77.35-1.6.58-2.46.69a4.2 4.2 0 0 0 1.84-2.32c-.82.5-1.72.87-2.67 1.07a4.16 4.16 0 0 0-7.08 3.8A11.8 11.8 0 0 1 3.15 4.6a4.15 4.15 0 0 0 1.29 5.55 4.1 4.1 0 0 1-1.88-.52v.05a4.16 4.16 0 0 0 3.34 4.07 4.2 4.2 0 0 1-1.88.07 4.16 4.16 0 0 0 3.88 2.88A8.36 8.36 0 0 1 2 19.54a11.77 11.77 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67 0-.18-.01-.36-.02-.54A8.35 8.35 0 0 0 22.46 6z" />
-                    </svg>
-                </a>
-                <a href="https://instagram.com" target="_blank" class="hover:text-gray-200">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2c1.6 0 3 1.4 3 3v10c0 1.6-1.4 3-3 3H7c-1.6 0-3-1.4-3-3V7c0-1.6 1.4-3 3-3h10zm-5 3.5a5.5 5.5 0 1 0 .001 11.001A5.5 5.5 0 0 0 12 7.5zm0 2a3.5 3.5 0 1 1-.001 6.999A3.5 3.5 0 0 1 12 9.5zm4.8-3.9a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2z" />
-                    </svg>
-                </a>
-                <a href="https://bandungpilotacademy.com/" target="_blank"><img src="{{asset('favicon.png')}}" alt="icon" class="w-5 h-5"></a>
-            </div>
-        </div>
-
-        <header class="bg-white shadow-md">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex justify-center items-center">
-                <a href="{{ route('guest.view') }}">
-                    <img src="{{ asset('favicon.png') }}" alt="Logo" class="h-12 md:h-16">
-                </a>
-            </div>
-        </header>
-    </div>
-
-    <div class="relative w-full h-64 md:h-96">
-        <img src="{{asset('gambar/hero.jpg')}}" alt="Banner" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-black/20 z-10"></div>
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-lg" style="text-shadow:0 2px 8px #000,0 0 2px #fff;">Welcome</h1>
-            <p class="mt-2 text-lg md:text-2xl font-semibold drop-shadow-lg" style="text-shadow:0 2px 8px #000,0 0 2px #fff;">
-                <span class="text-blue-300 font-bold">Bandung</span> <span class="text-white">Pilot Academy</span>
-            </p>
-        </div>
-    </div>
-
-        <div class="max-w-3xl mx-auto mt-8 mb-4 flex justify-center px-2">
-            <div class="w-full aspect-video rounded-xl shadow-lg overflow-hidden bg-black">
-                <video controls autoplay muted playsinline class="w-full h-full object-cover">
-                    <source src="{{ asset('vidio/contoh.mp4') }}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-
-        <section class="max-w-3xl mx-auto bg-gradient-to-br from-blue-50 via-white to-blue-100 rounded-2xl shadow-2xl p-4 md:p-8 mt-8 mb-8 border border-blue-100">
+<body class="bg-gradient-to-br from-blue-50 via-white to-blue-100 min-h-screen">
+    <div id="formModal"
+        class="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 opacity-100 pointer-events-auto transition-opacity duration-300">
+        <div
+            class="bg-white w-full max-w-lg mx-4 rounded-2xl shadow-2xl p-6 md:p-10 relative overflow-y-auto max-h-[90vh]">
+            <button onclick="closeModal()"
+                class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
             <div class="flex flex-col items-center mb-4">
-                <div class="bg-blue-600 rounded-full p-3 mb-2 shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m-4 0h-1v-4h-1m4 0h-1v-4h-1" /></svg>
-                </div>
-                <h2 class="text-3xl font-extrabold text-blue-700 mb-1 tracking-tight">About Us</h2>
-                <div class="w-16 h-1 bg-gradient-to-r from-blue-400 to-blue-700 rounded-full mb-4"></div>
+                <img src="{{ asset('favicon.png') }}" alt="Info" class="h-12 w-12 mb-2">
+                <h2 class="text-lg font-bold text-blue-700 mb-2">Guest Registration</h2>
+                <p class="text-sm text-gray-600 text-center mb-2 px-2">
+                    This form is only used to collect your name and email information.
+                    <span class="font-semibold text-blue-600">Your data will not be used for any other purpose</span>
+                    and is guaranteed privacy.
+                </p>
+                <div class="w-full border-b border-gray-200 mb-4"></div>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+            <form action="{{ route('guest.store') }}" method="POST" class="space-y-5">
+                @csrf
                 <div>
-                    <p class="text-gray-700 text-base md:text-lg mb-4 leading-relaxed">
-                        <span class="font-bold text-blue-700">To Bandung Pilot Academy</span> is an information technology company focused on developing innovative digital solutions and providing professional IT services. We help businesses grow through reliable websites, mobile applications, and information systems.
-                    </p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center bg-blue-100 rounded-lg px-3 py-2 hover:bg-blue-200 transition text-sm md:text-base">
-                            <svg class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V6c0-2.21 3.59-4 8-4s8 1.79 8 4v8c0 2.21-3.59 4-8 4z"/></svg>
-                            Established in 2020, Jakarta
-                        </li>
-                        <li class="flex items-center bg-blue-100 rounded-lg px-3 py-2 hover:bg-blue-200 transition text-sm md:text-base">
-                            <svg class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2a4 4 0 0 1 8 0v2"/></svg>
-                            Digital solutions for SMEs & corporations
-                        </li>
-                        <li class="flex items-center bg-blue-100 rounded-lg px-3 py-2 hover:bg-blue-200 transition text-sm md:text-base">
-                            <svg class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                            Professional & experienced team
-                        </li>
-                        <li class="flex items-center bg-blue-100 rounded-lg px-3 py-2 hover:bg-blue-200 transition text-sm md:text-base">
-                            <svg class="h-5 w-5 text-blue-600 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V6c0-2.21 3.59-4 8-4s8 1.79 8 4v8c0 2.21-3.59 4-8 4z"/></svg>
-                            Quality, innovation, & customer satisfaction
-                        </li>
-                    </ul>
+                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="name">Name</label>
+                    <input type="text" name="name" id="name"
+                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Enter your name" required>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <img src="{{ asset('favicon.png') }}" alt="Company Logo" class="h-20 w-20 md:h-24 md:w-24 rounded-full shadow-lg border-4 border-blue-200 mb-4">
-                    <p class="text-blue-700 font-semibold text-center text-sm md:text-base">"With us, realize your business digital transformation!"</p>
+                <div>
+                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="email">Email</label>
+                    <input type="email" name="email" id="email"
+                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Enter your email" required>
                 </div>
-            </div>
-            <div class="w-full border-t border-blue-100 mt-8 mb-2"></div>
-            <p class="text-gray-700 text-center mt-2 text-sm md:text-base">
-                Contact us for the best digital solutions and consultation for your business.
-            </p>
-        </section>
-
-   <div id="formModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-opacity duration-300 ease-out">
-    <!-- Modal Content -->
-        <div class="bg-white p-4 md:p-8 rounded-2xl shadow-2xl w-full max-w-sm md:max-w-2xl lg:max-w-4xl xl:max-w-6xl relative transform scale-95 transition-transform duration-300 ease-out">
-        <button onclick="closeModal()" class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">
-            &times;
-        </button>
-        <div class="flex flex-col items-center mb-4">
-            <img src="{{ asset('favicon.png') }}" alt="Info" class="h-12 w-12 mb-2">
-            <h2 class="text-lg font-bold text-blue-700 mb-2">Please fill in this form</h2>
-            <p class="text-sm text-gray-600 text-center mb-2 px-2">This form is solely used to collect your name and email information <span class="font-semibold text-blue-600">your privacy is guarenteed,the data</span> will not be used for any other purpose.</p>
-            <div class="w-full border-b border-gray-200 mb-4"></div>
+                <div>
+                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="occupation">Occupation</label>
+                    <input type="text" name="occupation" id="occupation"
+                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Enter your occupation" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="company">Company</label>
+                    <input type="text" name="company" id="company"
+                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Enter your company" required>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm mb-1 font-medium" for="phone">Phone Number</label>
+                    <input type="text" name="phone" id="phone"
+                        class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition"
+                        placeholder="Enter your phone number" required>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit"
+                        class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-lg shadow-lg font-semibold hover:from-blue-600 hover:to-blue-800 transition flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Submit
+                    </button>
+                </div>
+            </form>
         </div>
-        <h2 class="text-base font-semibold mb-4 text-center text-gray-800 tracking-wide uppercase">
-            Silakan Isi Informasi Anda
-        </h2>
-    <form action="{{ route('guest.store') }}" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            @csrf
-            <div>
-                <label class="block text-gray-700 text-sm mb-1 font-medium" for="nama">Name</label>
-                <input type="text" name="name" id="nama" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition" placeholder="Name" required>
-            </div>
-            <div>
-                <label class="block text-gray-700 text-sm mb-1 font-medium" for="email">Email</label>
-                <input type="email" name="email" id="email" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition" placeholder="Email" required>
-            </div>
-            <div>
-                <label class="block text-gray-700 text-sm mb-1 font-medium" for="occupation">Occupation</label>
-                <input type="text" name="occupation" id="occupation" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition" placeholder="Occupation" required>
-            </div>
-            <div>
-                <label class="block text-gray-700 text-sm mb-1 font-medium" for="company">Company Name</label>
-                <input type="text" name="company" id="company" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition" placeholder="Company Name" required>
-            </div>
-            <div>
-                <label class="block text-gray-700 text-sm mb-1 font-medium" for="phone">Phone Number</label>
-                <input type="text" name="phone" id="phone" class="w-full border-2 border-blue-200 rounded-lg px-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 focus:outline-none transition" placeholder="Phone Number" required>
-            </div>
-            <div class="flex items-end justify-end md:col-span-2">
-                <button type="submit" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-6 py-2 rounded-lg shadow-lg font-semibold hover:from-blue-600 hover:to-blue-800 transition flex items-center gap-2 w-full lg:w-auto">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
-                    Submit
-                </button>
-            </div>
-        </form>
     </div>
-</div>
-
-<script>
-    function openModal() {
-        const modal = document.getElementById('formModal');
-        modal.classList.remove('opacity-0', 'invisible');
-        modal.firstElementChild.classList.remove('scale-95');
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('formModal');
-        modal.classList.add('opacity-0', 'invisible');
-        modal.firstElementChild.classList.add('scale-95');
-    }
-
-    window.addEventListener('load', () => {
-    setTimeout(() => {
-    openModal();
-    }, 500);
-    });
-</script>
+    <nav class="bg-blue-600 shadow sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center items-center">
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('favicon.png') }}" alt="Logo" class="h-10 w-15">
+                <img src="{{ asset('mstech.png')}}" alt="logo" class="h-10 w-15">
+            </div>
+        </div>
+    </nav>
+    <section class="relative h-[40vh] sm:h-[60vh] md:h-[75vh] flex items-center justify-center bg-blue-900">
+        <img src="{{ asset('gambar/hero.jpg') }}" alt="Flight Academy"
+            class="absolute inset-0 w-full h-full object-cover opacity-70">
+        <div class="relative z-10 text-center text-white px-2">
+            <h1 class="text-2xl sm:text-4xl md:text-6xl font-extrabold drop-shadow-lg">Reach Your Dreams to Fly</h1>
+            <p class="mt-4 text-base sm:text-lg md:text-2xl font-medium drop-shadow">
+                Professional Pilot Training & Aviation School
+            </p>
+            <a href="mailto:marcom@bandungpilotacademy.com"
+                class="mt-6 sm:mt-8 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 sm:px-8 py-2 sm:py-3 rounded-full shadow-lg transition">
+                Get Consultation
+            </a>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
+    </section>
+    <section class="w-full bg-white py-8 sm:py-12">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <div class="w-full md:w-1/2 rounded-xl overflow-hidden shadow-lg mb-4 md:mb-0">
+                <iframe class="w-full h-48 sm:h-64 md:h-80 rounded-xl"
+                    src="https://www.youtube.com/embed/H51yAwCDIa0?autoplay=1&mute=1&playsinline=1"
+                    title="YouTube video" frameborder="0"
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700 mb-3 sm:mb-4">
+                    Experience Our Academy
+                </h2>
+                <p class="text-gray-700 text-base sm:text-lg mb-3 sm:mb-4">
+                    Take a closer look at our facilities, training aircraft, and the vibrant learning environment at
+                    Bandung Pilot Academy. Our video tour gives you a glimpse into the daily life of our students and
+                    the high standards we maintain for pilot education.
+                </p>
+                <ul class="space-y-2 text-sm sm:text-base">
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Modern classrooms &
+                        simulators</li>
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Real flight training
+                        footage</li>
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Inspiring student
+                        stories</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="max-w-5xl mx-auto px-4 py-10 sm:py-16">
+        <div class="flex flex-col md:flex-row items-center gap-6 md:gap-10">
+            <img src="{{ asset('favicon.png') }}" alt="About"
+                class="h-24 w-24 sm:h-32 sm:w-32 md:h-48 md:w-48 rounded-full shadow-lg border-4 border-blue-200 mb-4 md:mb-0">
+            <div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-700 mb-3 sm:mb-4">About Bandung Pilot
+                    Academy</h2>
+                <p class="text-gray-700 text-base sm:text-lg mb-3 sm:mb-4">
+                    Bandung Pilot Academy is a leading aviation school in Indonesia, dedicated to training the next
+                    generation of professional pilots.
+                </p>
+                <ul class="space-y-2 text-sm sm:text-base">
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Certified by the
+                        Directorate General of Civil Aviation</li>
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Modern aircraft &
+                        simulators</li>
+                    <li class="flex items-center"><span class="text-blue-600 mr-2">&#10003;</span> Internationally
+                        recognized programs</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="downlaods">
+        <div class="">
+            <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 text-center mb-6 sm:mb-10">Brochure & Company
+                Profile
+            </h2>
+        </div>
+        <div id="pdfModal"
+            class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300">
+            <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl h-[80vh] relative flex flex-col">
+                <button onclick="closePdfModal()"
+                    class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
+                <iframe id="pdfFrame" src="" class="w-full h-full rounded-b-xl" frameborder="0"></iframe>
+            </div>
+        </div>
+        <div class="w-full flex justify-center bg-gray-100 py-6">
+            <a href="{{ asset('file/BPA_Brochure.pdf') }}" id="previewBrochureBtn"
+                class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                </svg>
+                BPA Brochure
+            </a>
+        </div>
+        <div class="w-full flex justify-center bg-gray-100 py-6">
+            <a href="{{ route('guest.download', 'Company_Profile.pd') }}"
+                class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition"
+                download>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                </svg>
+                Company Profile
+            </a>
+        </div>
+    </section>
+    <section id="programs" class="bg-white py-10 sm:py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 text-center mb-6 sm:mb-10">Our Programs</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                    <img src="{{ asset('gambar/ppl.jpg') }}" alt="PPL"
+                        class="h-20 w-20 sm:h-24 sm:w-24 rounded-full mb-3 sm:mb-4 object-cover">
+                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">Private Pilot License (PPL)</h3>
+                    <p class="text-gray-600 text-center text-sm sm:text-base">Basic pilot training for those who want to
+                        fly for personal or recreational purposes.</p>
+                </div>
+                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                    <img src="{{ asset('gambar/cpl.jpg') }}" alt="CPL"
+                        class="h-20 w-20 sm:h-24 sm:w-24 rounded-full mb-3 sm:mb-4 object-cover">
+                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">Commercial Pilot License (CPL)
+                    </h3>
+                    <p class="text-gray-600 text-center text-sm sm:text-base">Professional pilot training for a career
+                        in commercial aviation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="advantages" class="max-w-6xl mx-auto px-4 py-10 sm:py-16">
+        <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 text-center mb-6 sm:mb-10">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                <h4 class="font-bold text-blue-700 mb-1">Experienced Instructors</h4>
+                <p class="text-gray-600 text-center text-sm sm:text-base">All instructors are certified and have
+                    thousands of flight hours.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                <h4 class="font-bold text-blue-700 mb-1">Modern Fleet</h4>
+                <p class="text-gray-600 text-center text-sm sm:text-base">Training with the latest aircraft and flight
+                    simulators.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                <h4 class="font-bold text-blue-700 mb-1">Career Support</h4>
+                <p class="text-gray-600 text-center text-sm sm:text-base">Assistance for job placement and airline
+                    recruitment.</p>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
+                <h4 class="font-bold text-blue-700 mb-1">International Standard</h4>
+                <p class="text-gray-600 text-center text-sm sm:text-base">Curriculum and certification recognized
+                    globally.</p>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-blue-900 text-white py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <img src="{{ asset('favicon.png') }}" alt="Logo" class="h-6 w-6 rounded-full">
+                <span class="font-bold text-sm sm:text-base">Bandung Pilot Academy</span>
+            </div>
+            <div class="text-xs sm:text-sm">&copy; {{ date('Y') }} Bandung Pilot Academy. All rights reserved.</div>
+        </div>
+    </footer>
 
     @if(session('success'))
         <script>
             Swal.fire({
                 icon: 'success',
                 title: 'Success!',
-                text: "{{ session('success') }}",
-                confirmButtonColor: '#3085d6',
-            })
+                text: '{{ session('success') }}',
+                confirmButtonColor: '#2563eb'
+            }).then(() => {
+                closeModal();
+            });
+
+            document.getElementById('downloadBrochureBtn').addEventListener('click', function (e) {
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Download Brochure',
+                    text: 'Thank you for your interest! Click OK to download the brochure.',
+                    icon: 'info',
+                    confirmButtonText: 'OK',
+                    confirmButtonColor: '#2563eb'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = this.href;
+                    }
+                });
+            });
         </script>
     @endif
 
-       <script>
-        @if(session('success'))
-            document.getElementById('formModal').style.display = 'none';
-        @endif
+    <script>
+        function closeModal() {
+            document.getElementById('formModal').classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('formModal').classList.remove('opacity-100', 'pointer-events-auto');
+        }
     </script>
-
-    <main class="mt-6">
-        @yield('content')
-    </main>
+    <script>
+        function openPdfModal(pdfUrl) {
+            document.getElementById('pdfFrame').src = pdfUrl;
+            document.getElementById('pdfModal').classList.remove('opacity-0', 'pointer-events-none');
+            document.getElementById('pdfModal').classList.add('opacity-100');
+        }
+        function closePdfModal() {
+            document.getElementById('pdfModal').classList.add('opacity-0', 'pointer-events-none');
+            document.getElementById('pdfModal').classList.remove('opacity-100');
+            document.getElementById('pdfFrame').src = '';
+        }
+        document.getElementById('previewBrochureBtn').addEventListener('click', function (e) {
+            e.preventDefault();
+            openPdfModal(this.href);
+        });
+    </script>
 </body>
 
 </html>

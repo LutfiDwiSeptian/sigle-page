@@ -34,4 +34,15 @@ class FrontPageController extends Controller
 
     return redirect()->back()->with('success', 'Thank You for Your Submission' );
     }
+
+    public function download($filename)
+    {
+        $path = public_path('file/' . $filename);
+
+        if(file_exists($path)) {
+            return response()->download($path);
+        } else {
+            abort(404, 'Files not Found');
+        }
+    }
 }
