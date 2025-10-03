@@ -191,19 +191,37 @@
     <section id="programs" class="bg-white py-10 sm:py-16">
         <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-2xl sm:text-3xl font-bold text-blue-700 text-center mb-6 sm:mb-10">Our Programs</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-user"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
-                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">Private Pilot License (PPL)</h3>
-                    <p class="text-gray-600 text-center text-sm sm:text-base">Basic pilot training for those who want to
-                        fly for personal or recreational purposes.</p>
-                </div>
-                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center">
-                    <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-plane-departure"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 1.414l2.897 -.776l-3.743 -6.244l2.898 -.777l5.675 5.727z" /><path d="M3 21h18" /></svg>
-                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">Commercial Pilot License (CPL)
+            <div class="flex flex-col sm:flex-row justify-center items-stretch gap-6 sm:gap-10">
+                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center w-full sm:max-w-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="mb-2 text-blue-700">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">
+                        Private Pilot License (PPL)
                     </h3>
-                    <p class="text-gray-600 text-center text-sm sm:text-base">Professional pilot training for a career
-                        in commercial aviation.</p>
+                    <p class="text-gray-600 text-center text-sm sm:text-base">
+                        Basic pilot training for those who want to fly for personal or recreational purposes.
+                    </p>
+                </div>
+                <div class="bg-blue-50 rounded-xl shadow-lg p-4 sm:p-6 flex flex-col items-center w-full sm:max-w-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="mb-2 text-blue-700">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path
+                            d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 1.414l2.897 -.776l-3.743 -6.244l2.898 -.777l5.675 5.727z" />
+                        <path d="M3 21h18" />
+                    </svg>
+                    <h3 class="text-lg sm:text-xl font-bold text-blue-700 mb-1 sm:mb-2">
+                        Commercial Pilot License (CPL)
+                    </h3>
+                    <p class="text-gray-600 text-center text-sm sm:text-base">
+                        Professional pilot training for a career in commercial aviation.
+                    </p>
                 </div>
             </div>
         </div>
