@@ -1,0 +1,61 @@
+deployment:
+  tasks:
+    # Set path
+    - export DEPLOYPATH=/home/USERNAME/public_html
+    - /bin/echo "Deploy path: $DEPLOYPATH"
+
+    # Sinkron kode (kecuali vendor, node_modules, .env)
+    - /usr/bin/rsync -av --delete \
+        --exclude=".git" \
+        --exclude=".cpanel.yml" \
+        --exclude="node_modules" \
+        --exclude="vendor" \
+        --exclude=".env" \
+        ./ $DEPLOYPATH
+
+    # Masuk ke folder deploy
+    - cd $DEPLOYPATH
+
+    # Pastikan .env ada (hanya sekali)
+    - if [ ! -f .env ]; then cp .env.example .env; fi
+
+    # Install dependency
+    - /bin/echo "Composer install"
+    - /opt/cpanel/composer/bin/composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+
+    # Bersihkan cache lama (aman jika kosong)
+    - /bin/echo "Clear old caches"
+    - php artisan cache:clear || true
+    - php artisan config:clear || true
+    - php artisan route:clear || true
+    - php artisan view:clear || true
+
+    # Jalankan migrasi (gunakan hanya jika DB sudah siap)
+    - /bin/echo "Migrate database"
+    - php artisan migrate --force || true
+
+    # Buat storage link (abaikan kalau sudah ada)
+    - /bin/echo "Storage link"
+    - php artisan storage:link || true
+
+    # Build cache baru
+    - /bin/echo "Build caches"
+    - php artisan config:cache || true
+    - php artisan route:cache || true
+    - php artisan view:cache || true
+    - php artisan event:cache || true
+
+    # Permission dasar
+    - /bin/echo "Set permissions"
+    - find storage -type d -exec chmod 775 {} \; || true
+    - find storage -type f -exec chmod 664 {} \; || true
+    - find bootstrap/cache -type d -exec chmod 775 {} \; || true
+    - find bootstrap/cache -type f -exec chmod 664 {} \; || true
+
+    # Hapus log lebih dari 14 hari (opsional)
+    - /bin/echo "Cleanup old logs"
+    - find storage/logs -type f -mtime +14 -delete || true
+
+    - /bin/echo "Laravel version:"
+    - php artisan --version || true
+    - /bin/echo "DEPLOY SELESAI ✅"
