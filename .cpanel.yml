@@ -2,6 +2,16 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/banb4683/public_html/
-    - /usr/local/bin/composer install --no-dev --prefer-dist --optimize-autoloader || true
-    - /bin/cp -R . $DEPLOYPATH
-    - /bin/chmod -R 755 $DEPLOYPATH/storage $DEPLOYPATH/bootstrap/cache || true
+    - composer install --no-dev --optimize-autoloader
+    - php artisan config:clear || true
+    - php artisan route:clear || true
+    - php artisan cache:clear || true
+    - php artisan config:cache
+    - php artisan route:cache
+    - chmod -R 775 storage bootstrap/cache || true
+    - /bin/rsync -av --delete \
+        --exclude=".git" \
+        --exclude=".cpanel.yml" \
+        --exclude="node_modules" \
+        --exclude=".env" \
+        ./ $DEPLOYPATH
