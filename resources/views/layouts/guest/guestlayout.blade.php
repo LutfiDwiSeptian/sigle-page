@@ -156,55 +156,34 @@
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl h-[80vh] relative flex flex-col">
                 <button onclick="closePdfModal()"
                     class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
-                <iframe id="pdfFrame" src="" class="w-full h-full rounded-b-xl" frameborder="0"></iframe>
+                <div id="pdfStatus" class="w-full text-center text-sm text-gray-600 pt-12 px-4 animate-pulse select-none">
+                    Loading document...
+                </div>
+                <iframe id="pdfFrame" src="" class="w-full h-full rounded-b-xl hidden" frameborder="0" title="PDF Preview"></iframe>
             </div>
         </div>
-        <div class="w-full flex flex-col items-center gap-4 bg-gray-100 py-6">
-            <div class="flex flex-col sm:flex-row gap-3">
-            <a
-                id="previewBrochureBtn"
-                href="https://mozilla.github.io/pdf.js/web/viewer.html?file={{ rawurlencode(asset('file/BPA_Brochure.pdf')) }}"
-                data-file="{{ asset('file/BPA_Brochure.pdf') }}"
+        <div class="w-full flex justify-center bg-gray-100 py-6">
+            <a href="{{ asset('file/BPA_Brochure.pdf') }}" id="previewBrochureBtn"
                 class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
                 </svg>
-                Preview Brochure
+                BPA Brochure
             </a>
-            <a
-                href="{{ asset('file/BPA_Brochure.pdf') }}"
-                download
-                class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
-                Download
-            </a>
-            </div>
         </div>
-
-        <div class="w-full flex flex-col items-center gap-4 bg-gray-100 py-6">
-            <div class="flex flex-col sm:flex-row gap-3">
-            <a
-                id="previewCompanyProfileBtn"
-                href="https://mozilla.github.io/pdf.js/web/viewer.html?file={{ rawurlencode(asset('file/Company_Profile.pdf')) }}"
-                data-file="{{ asset('file/Company_Profile.pdf') }}"
-                class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
+        <div class="w-full flex justify-center bg-gray-100 py-6">
+            <a href="{{ asset('file/Company_Profile.pdf') }}" id="previewCompanyProfileBtn"
+               data-expected-path="{{ public_path('file/Company_Profile.pdf') }}"
+               class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
                 </svg>
-                Preview Company Profile
+                Company Profile
             </a>
-            <a
-                href="{{ asset('file/Company_Profile.pdf') }}"
-                download
-                class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
-                Download
-            </a>
-            </div>
         </div>
-        <!-- Gunakan PDF.js viewer agar mobile bisa render inline & tetap ada opsi download -->
+        <!-- Script per tombol dihapus: handler dipusatkan di bagian akhir untuk menghindari error ketika file tidak tersedia -->
     </section>
     <section id="programs" class="bg-white py-10 sm:py-16">
         <div class="max-w-6xl mx-auto px-4">
@@ -315,9 +294,57 @@
     </script>
     <script>
         function openPdfModal(pdfUrl) {
-            document.getElementById('pdfFrame').src = pdfUrl;
-            document.getElementById('pdfModal').classList.remove('opacity-0', 'pointer-events-none');
-            document.getElementById('pdfModal').classList.add('opacity-100');
+            const modal = document.getElementById('pdfModal');
+            const frame = document.getElementById('pdfFrame');
+            const status = document.getElementById('pdfStatus');
+            // Reset state
+            frame.classList.add('hidden');
+            frame.src = '';
+            status.classList.remove('hidden');
+            status.textContent = 'Loading document...';
+            modal.classList.remove('opacity-0','pointer-events-none');
+            modal.classList.add('opacity-100');
+
+            // Helper: set frame source and handle onload
+            const setFrame = (url, note=null) => {
+                frame.onload = () => {
+                    // Some PDF viewers may still render blank; keep minimal delay
+                    setTimeout(() => {
+                        status.classList.add('hidden');
+                        frame.classList.remove('hidden');
+                    }, 150);
+                };
+                if (note) {
+                    status.textContent = note;
+                }
+                frame.src = url;
+            };
+
+            // HEAD check to verify accessibility
+            fetch(pdfUrl, { method: 'HEAD' })
+                .then(resp => {
+                    if (resp.ok) {
+                        setFrame(pdfUrl + '#view=FitH');
+                    } else {
+                        // Fallback to Google Viewer
+                        status.textContent = 'Direct load failed (status ' + resp.status + '), trying fallback viewer...';
+                        const gv = 'https://drive.google.com/viewerng/viewer?embedded=true&url=' + encodeURIComponent(pdfUrl);
+                        setFrame(gv);
+                    }
+                })
+                .catch(() => {
+                    status.textContent = 'Unable to access file directly, trying fallback...';
+                    const gv = 'https://drive.google.com/viewerng/viewer?embedded=true&url=' + encodeURIComponent(pdfUrl);
+                    setFrame(gv);
+                });
+
+            // Timeout fallback if still blank after 6s
+            setTimeout(() => {
+                if (frame.classList.contains('hidden')) {
+                    status.classList.remove('hidden');
+                    status.innerHTML = '<span class="text-red-600">Failed to display PDF. </span><br><a href="' + pdfUrl + '" class="text-blue-600 underline" download>Download instead</a>';
+                }
+            }, 6000);
         }
         function closePdfModal() {
             document.getElementById('pdfModal').classList.add('opacity-0', 'pointer-events-none');
