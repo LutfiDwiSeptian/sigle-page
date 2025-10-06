@@ -156,6 +156,14 @@
             <div class="bg-white rounded-xl shadow-2xl w-full max-w-3xl h-[80vh] relative flex flex-col">
                 <button onclick="closePdfModal()"
                     class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
+                <!-- Mobile-only download button -->
+                <div class="absolute left-3 top-3 md:hidden">
+                    <a id="pdfDownloadBtn" href="#" download
+                       class="inline-flex items-center gap-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-3 py-1.5 rounded shadow">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" /></svg>
+                        Download
+                    </a>
+                </div>
                 <div id="pdfStatus" class="w-full text-center text-sm text-gray-600 pt-12 px-4 animate-pulse select-none">
                     Loading document...
                 </div>
@@ -297,6 +305,7 @@
             const modal = document.getElementById('pdfModal');
             const frame = document.getElementById('pdfFrame');
             const status = document.getElementById('pdfStatus');
+            const dlBtn = document.getElementById('pdfDownloadBtn');
             // Reset state
             frame.classList.add('hidden');
             frame.src = '';
@@ -304,6 +313,9 @@
             status.textContent = 'Loading document...';
             modal.classList.remove('opacity-0','pointer-events-none');
             modal.classList.add('opacity-100');
+            if (dlBtn) {
+                dlBtn.href = pdfUrl; // set original file link
+            }
 
             // Helper: set frame source and handle onload
             const setFrame = (url, note=null) => {
