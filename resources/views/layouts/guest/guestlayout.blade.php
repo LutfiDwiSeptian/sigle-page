@@ -187,12 +187,7 @@
             <div class="text-sm text-red-600 font-medium">Company Profile PDF not found.</div>
             @endif
         </div>
-        <script>
-            document.getElementById('previewCompanyProfileBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            openPdfModal(this.href);
-            });
-        </script>
+        <!-- Script per tombol dihapus: handler dipusatkan di bagian akhir untuk menghindari error ketika file tidak tersedia -->
     </section>
     <section id="programs" class="bg-white py-10 sm:py-16">
         <div class="max-w-6xl mx-auto px-4">
@@ -312,10 +307,23 @@
             document.getElementById('pdfModal').classList.remove('opacity-100');
             document.getElementById('pdfFrame').src = '';
         }
-        document.getElementById('previewBrochureBtn').addEventListener('click', function (e) {
-            e.preventDefault();
-            openPdfModal(this.href);
-        });
+        const brochureBtn = document.getElementById('previewBrochureBtn');
+        if (brochureBtn) {
+            brochureBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openPdfModal(this.href);
+            });
+        }
+        const companyBtn = document.getElementById('previewCompanyProfileBtn');
+        if (companyBtn) {
+            companyBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openPdfModal(this.href);
+            });
+        } else {
+            // Debug (hanya muncul di console dev tools)
+            console.warn('Company Profile button not rendered. Check $companyProfileExists or file path.');
+        }
     </script>
 </body>
 
