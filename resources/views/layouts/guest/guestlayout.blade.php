@@ -170,22 +170,15 @@
                 BPA Brochure
             </a>
         </div>
-        @php
-            $companyProfileRel = 'file/Company_Profile.pdf';
-            $companyProfileExists = file_exists(public_path($companyProfileRel));
-        @endphp
         <div class="w-full flex justify-center bg-gray-100 py-6">
-            @if($companyProfileExists)
-            <a href="{{ asset($companyProfileRel) }}" id="previewCompanyProfileBtn"
+            <a href="{{ asset('file/Company_Profile.pdf') }}" id="previewCompanyProfileBtn"
+               data-expected-path="{{ public_path('file/Company_Profile.pdf') }}"
                class="inline-flex items-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-semibold px-5 py-2 rounded-lg shadow transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" />
                 </svg>
                 Company Profile
             </a>
-            @else
-            <div class="text-sm text-red-600 font-medium">Company Profile PDF not found.</div>
-            @endif
         </div>
         <!-- Script per tombol dihapus: handler dipusatkan di bagian akhir untuk menghindari error ketika file tidak tersedia -->
     </section>
@@ -318,11 +311,14 @@
         if (companyBtn) {
             companyBtn.addEventListener('click', function (e) {
                 e.preventDefault();
+                // Optional: cek cepat apakah file bisa dimuat
+                const testImg = new Image();
+                testImg.onerror = () => console.warn('PDF may not exist or blocked:', this.href);
+                testImg.onload = () => { /* ignore; some servers return 200 */ };
+                testImg.src = this.href + '#cache-bust=' + Date.now();
                 openPdfModal(this.href);
             });
-        } else {
-            // Debug (hanya muncul di console dev tools)
-            console.warn('Company Profile button not rendered. Check $companyProfileExists or file path.');
+            console.log('Company Profile button initialized:', companyBtn.getAttribute('href'));
         }
     </script>
 </body>
