@@ -19,7 +19,7 @@
                 class="absolute top-3 right-3 text-gray-400 hover:text-red-500 text-2xl font-bold transition">&times;</button>
             <div class="flex flex-col items-center mb-3">
                 <img src="{{ asset('favicon.png') }}" alt="Info" class="h-10 w-10 mb-1">
-                <h2 class="text-base font-bold text-blue-700 mb-1 tracking-wide">Guest Registration</h2>
+                <h2 class="text-base font-bold text-blue-700 mb-1 tracking-wide">test</h2>
                 <p class="text-xs text-gray-600 text-center mb-2 px-1 leading-relaxed">
                     This form is only used to collect your name and email information.
                     <span class="font-semibold text-blue-600">Your data will not be used for any other purpose</span>
